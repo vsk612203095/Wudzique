@@ -1,0 +1,25 @@
+<svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="31" height="30" fill="#1E1E1E"/>
+<g id="Desktop - 24" clip-path="url(#clip0_0_1)">
+<rect width="1440" height="1024" transform="translate(-1194 -27)" fill="white"/>
+<rect id="Rectangle 26" x="-1194" y="-27" width="1440" height="85" fill="url(#paint0_linear_0_1)"/>
+<g id="Group 37">
+<g id="Group 36">
+<g id="Group 35">
+<g id="Shopping cart">
+<path id="Icon" d="M1.29102 1.2915H6.45768L9.91935 18.5869C10.0375 19.1816 10.361 19.7158 10.8333 20.096C11.3055 20.4762 11.8965 20.6781 12.5027 20.6665H25.0577C25.6639 20.6781 26.2548 20.4762 26.7271 20.096C27.1994 19.7158 27.5229 19.1816 27.641 18.5869L29.7077 7.74984H7.74935M12.916 27.1248C12.916 27.8382 12.3377 28.4165 11.6243 28.4165C10.911 28.4165 10.3327 27.8382 10.3327 27.1248C10.3327 26.4115 10.911 25.8332 11.6243 25.8332C12.3377 25.8332 12.916 26.4115 12.916 27.1248ZM27.1244 27.1248C27.1244 27.8382 26.5461 28.4165 25.8327 28.4165C25.1193 28.4165 24.541 27.8382 24.541 27.1248C24.541 26.4115 25.1193 25.8332 25.8327 25.8332C26.5461 25.8332 27.1244 26.4115 27.1244 27.1248Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="-474" y1="-27" x2="-474" y2="58" gradientUnits="userSpaceOnUse">
+<stop stop-color="#100A0C"/>
+<stop offset="1" stop-color="#555A28"/>
+</linearGradient>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="1024" fill="white" transform="translate(-1194 -27)"/>
+</clipPath>
+</defs>
+</svg>

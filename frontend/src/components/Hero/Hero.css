@@ -1,0 +1,94 @@
+.hero {
+  position : fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 3rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../../assets/background.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  margin-top: 25px; /* match navbar height */
+  box-sizing: border-box;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text span{  
+  position: absolute;
+  width: 777px;
+  height: 82px;
+  left: 0.5%;
+  top: 34%;
+
+  font-family: 'Philosopher';
+  font-style: normal; 
+  font-weight: 400;
+  font-size: 73px;
+  line-height: 82px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.hero-text .elevate{
+  position: absolute;
+  width: 480px;
+  height: 100px;
+  left: 2%;
+  top: 25%;
+  font-family: 'Playball' , cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 120px;
+  line-height: 79%;
+  color: #B29784;
+}
+
+
+.hero-text p {
+  margin-top: 60px;
+  font-family:'Prata';
+  font-size: 1.2rem;
+  font-weight : 400;
+  margin-bottom: 1.5rem;
+  color: #B09885;
+
+}
+
+
+.hero-btn {
+  width: 180px;
+  height: 50px;
+  color: white;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 34px;
+  cursor: pointer;
+  background: #425e1d;
+  box-shadow: 20px 4px 4px rgba(58, 32, 32, 0.151);
+}
+
+
+
+
+.hero-overlay-image {
+  position: absolute;
+  width: 400px; /* adjust as per requirement */
+  height: auto;
+  left: 72%;  /* adjust to align on the wooden block */
+  top: 55%;   /* adjust to align vertically */
+  transform: translate(-50%, -50%); /* center from the left/top point */
+  pointer-events: none; /* prevents interaction if not needed */
+}
