@@ -22,7 +22,8 @@ function Navbar() {
                 <div className="nav-links">
                     <ul className="nav-items">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
                         <li><a href="#" id="login">Log in</a></li>    
                         <li><a href="#" id="cart-icon"><img src={cart} alt="Cart"></img></a></li>    
                         <li><a href="#" id="heart-icon" alt="Wishlist"><img src={heart}></img></a></li>    

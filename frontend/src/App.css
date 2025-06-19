@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+.html{
+    font-size: 10px;
+}
+
+
 .container{
-    width:1200px;   
-    align-items: center;
+    /* width:1536px;    */
+    margin: auto;
 }
 
