@@ -5,10 +5,9 @@
   align-items: center;
   color: white;
   padding: 3rem 2rem;
-  
   background-image: url('../../assets/background.jpg');
   background-size: cover; /* ensures full image is shown */
-  background-position: bottom;
+  background-position: top;
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
@@ -23,10 +22,9 @@
 
 .hero-text {
   max-width: 50%;
-  padding-top: 5em;
   transform: translate(-50%, -50%);
-  margin-top: 10em;
-  margin-left: 4em;
+  margin-top: 10%;
+  margin-left: 2%;
 }
 
 .hero-text h1{
@@ -42,7 +40,7 @@
   font-family: 'Philosopher';
   font-style: normal; 
   font-weight: 400;
-  font-size: 5.3rem;
+  font-size: 7.5rem;
   line-height: 82px;
   color: #FFFFFF;
   margin: 0;
@@ -52,7 +50,7 @@
   font-family: 'Playball' , cursive;
   font-style: normal;
   font-weight: 400;
-  font-size: 9rem;
+  font-size: 15rem;
   line-height: 79%;
   color: #B29784;
   margin: 0;
@@ -60,11 +58,11 @@
 
 
 .hero-text p {
-  margin-top: 0.7rem;
+  margin-top: 1.8rem;
   font-family:'Prata';
-  font-size: 1.3rem;
+  font-size: 2.5rem;
   font-weight : 400;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   padding-left: 10%;
   color: #B09885;
 }
@@ -79,11 +77,11 @@
   font-weight: 400;
   line-height: 100%;
   padding: 0.7rem 1.5rem;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   border: none;
   border-radius: 34px;
   cursor: pointer;
-  background: #425e1d;
+  background: #7E4623;
   margin-left: 10%;
 }
 
@@ -92,10 +90,10 @@
 
 .hero-overlay-image {
   position: absolute;
-  width: 580px; /* adjust as per requirement */
+  width: 500px; /* adjust as per requirement */
   height: auto;
   left: 73%;  /* adjust to align on the wooden block */
-  top: 35%;   /* adjust to align vertically */
+  top: 40%;   /* adjust to align vertically */
   transform: translate(-50%, -50%); /* center from the left/top point */
   pointer-events: none; /* prevents interaction if not needed */
 }

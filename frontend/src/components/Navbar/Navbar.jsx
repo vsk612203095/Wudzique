@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logo.svg';
 import search from '../../assets/search-icon.svg';
 import cart from '../../assets/cart-icon.svg';
 import heart from '../../assets/heart-icon.svg';
+import login from '../../Pages/Login/Login.jsx';
+import profile from '../../assets/profile-icon.svg';
+import orders from '../../assets/orders-icon.svg';
+import history from '../../assets/history-icon.svg';
+import wishlist from '../../assets/wishlist-icon.svg';
+import logout from '../../assets/logout-icon.svg';
+import loginIcon from '../../assets/login-icon.png';
 
 function Navbar() {
-  return (
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    return (
     <>
         <section className="navbar-container container">
             <nav className="navbar container">
@@ -24,17 +33,56 @@ function Navbar() {
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#" id="login">Log in</a></li>    
+                        <li><a href={login} id="login">Log in</a></li>    
                         <li><a href="#" id="cart-icon"><img src={cart} alt="Cart"></img></a></li>    
                         <li><a href="#" id="heart-icon" alt="Wishlist"><img src={heart}></img></a></li>    
                     </ul>
                 </div>
                 
-                <div class="hori-lines">
+                {/* <div class="hori-lines">
                     <span class="line line1"></span>
                     <span class="line line2"></span>
                     <span class="line line3"></span>
+                </div> */}
+
+                <div className='hamburger-wrapper' 
+                onMouseEnter={() =>setMenuOpen(true)} 
+                onMouseLeave={() => setMenuOpen(false)}>
+                    <div class="hori-lines">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+
+                    {menuOpen && (
+                        <div className='dropdown-menu'>
+                            <ul>
+                                {isLoggedIn ? (
+                                    <>
+                                        <li><img src={profile} alt='#' id='profile'></img>
+                                        <a href='#'>Profile</a></li>
+
+                                        <li><img src={orders} alt='#' id='orders'></img>
+                                        <a href='#'>My Orders</a></li>
+
+                                        <li><img src={history} alt='#' id='history'></img>
+                                        <a href='#'>History</a></li>
+
+                                        <li><img src={wishlist} alt='#' id='wishlist'></img>
+                                        <a href='#'>Wishlist</a></li>
+
+                                        <li><img src={logout} alt='#' id='logout'></img>
+                                        <a href='#' onClick={() => setIsLoggedIn(false)}>Logout</a></li>
+                                    </>
+                                ) : (
+                                    <li><img src={loginIcon} alt='#' id='login'></img><a href="#">Login</a></li>
+                                )}
+                            </ul>
+                        </div>
+                    )}
                 </div>
+
+                
             </nav>
         </section>
     </>

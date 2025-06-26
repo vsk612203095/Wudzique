@@ -1,0 +1,91 @@
+.about-container{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #431F00 4.33%, #B97E5A 100%);
+    height: 730px;
+    top: -11px;
+}
+
+.about-container .about-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 400px;
+    background: #3B190273;
+    
+}
+
+.about-container .about-details .about-text{
+    width: 50%;
+    font-family: 'Outfit';
+    font-weight: 200;   
+    font-size: 3.2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #BCB2B2;
+    margin-left: -8%;
+}
+
+
+.about-container .about-details h1{
+    font-family: 'Philosopher';
+    font-weight: 400;
+    font-size: 8.5rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #CAAA93;
+}
+
+.about-container .about-details .about-text p{
+    margin-top: 1em;
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
+.about-container .about-policies ul{
+    display: flex;
+    justify-content:center;
+    margin-top: -5rem;
+    gap: 5em;
+    padding: 0;
+    list-style: none;
+}
+
+.about-container .about-policies ul li{
+    background: #AF9168;
+    width: 250px;
+    height: 350px;
+    border-radius: 70px;
+    box-shadow: 5px 13px 4px 0px #00000040;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2em 1em;
+}
+ 
+
+.about-container .about-policies ul li img{
+    width: 128px;
+    height: 128px;
+    object-fit: contain; 
+    margin-bottom: 1.5em;
+}
+
+.about-container .about-policies ul li h1{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #61381B;
+    margin-bottom: 1em;
+}
+
+.about-container .about-policies ul li a img{
+    width: 42px;
+    height: 42px;
+}
