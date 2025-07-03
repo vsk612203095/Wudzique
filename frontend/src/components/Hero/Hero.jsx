@@ -6,7 +6,7 @@ function Hero()
 {
     return(
         <>
-            <section className="hero container">
+            <section className="hero container" id='hero'>
                 
                 <div className="hero-text">
                     <h1><i id="i1">Elevate</i> <i id='i2'>spaces naturally..</i></h1>

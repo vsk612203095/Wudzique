@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../assets/logo.svg';
 import search from '../../assets/search-icon.svg';
@@ -30,20 +31,14 @@ function Navbar() {
   
                 <div className="nav-links">
                     <ul className="nav-items">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href={login} id="login">Log in</a></li>    
-                        <li><a href="#" id="cart-icon"><img src={cart} alt="Cart"></img></a></li>    
-                        <li><a href="#" id="heart-icon" alt="Wishlist"><img src={heart}></img></a></li>    
+                        <li><Link to="/#hero">Home</Link></li>
+                        <li><Link to="/#about">About Us</Link></li>
+                        <li><Link to="#">Contact</Link></li>
+                        <li><Link to="/login" id="login">Log in</Link></li>    
+                        <li><Link to="#"  id="cart-icon"><img src={cart} alt="Cart"></img></Link></li>    
+                        <li><Link to="#" id="heart-icon" alt="Wishlist"><img src={heart}></img></Link></li>    
                     </ul>
                 </div>
-                
-                {/* <div class="hori-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
-                </div> */}
 
                 <div className='hamburger-wrapper' 
                 onMouseEnter={() =>setMenuOpen(true)} 
@@ -60,22 +55,22 @@ function Navbar() {
                                 {isLoggedIn ? (
                                     <>
                                         <li><img src={profile} alt='#' id='profile'></img>
-                                        <a href='#'>Profile</a></li>
+                                        <Link to="#">Profile</Link></li>
 
                                         <li><img src={orders} alt='#' id='orders'></img>
-                                        <a href='#'>My Orders</a></li>
+                                        <Link to="#">My Orders</Link></li>
 
                                         <li><img src={history} alt='#' id='history'></img>
-                                        <a href='#'>History</a></li>
+                                        <Link to='#'>History</Link></li>
 
                                         <li><img src={wishlist} alt='#' id='wishlist'></img>
-                                        <a href='#'>Wishlist</a></li>
+                                        <Link to='#'>Wishlist</Link></li>
 
                                         <li><img src={logout} alt='#' id='logout'></img>
-                                        <a href='#' onClick={() => setIsLoggedIn(false)}>Logout</a></li>
+                                        <Link to='#' onClick={() => setIsLoggedIn(false)}>Logout</Link></li>
                                     </>
                                 ) : (
-                                    <li><img src={loginIcon} alt='#' id='login'></img><a href="#">Login</a></li>
+                                    <li><img src={loginIcon} alt='#' id='login'></img><Link to="/login">Login</Link></li>
                                 )}
                             </ul>
                         </div>

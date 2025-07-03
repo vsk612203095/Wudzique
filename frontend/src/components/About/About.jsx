@@ -8,7 +8,7 @@ import arrow from '../../assets/down-arrow-icon.svg';
 function About(){
     return(
         <>
-            <section className='about-container container'>
+            <section className='about-container container' id='about'>
                 <div className='about-details'>
                     <div className='about-text'>
                         <h1>About Us</h1>
