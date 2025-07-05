@@ -1,99 +1,157 @@
-.hero { 
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  padding: 3rem 2rem;
-  background-image: url('../../assets/background.jpg');
-  background-size: cover; /* ensures full image is shown */
-  background-position: top;
-  background-repeat: no-repeat;
+.hero-section {
   width: 100vw;
   height: 100vh;
+  background: url('../../assets/background.jpg') center/cover no-repeat;
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow:hidden;
-  position : relative;
-  z-index: -100;     
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 5vw;
+  z-index: 2;
+}
 
 .hero-text {
-  max-width: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 10%;
-  margin-left: 2%;
-}
-
-.hero-text h1{
+  flex: 1 1 0;
+  max-width: 600px;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.1rem;
-  padding-left: 10%;
+  justify-content: center;
+  z-index: 2;
 }
 
-
-.hero-text #i2{  
-  font-family: 'Philosopher';
-  font-style: normal; 
-  font-weight: 400;
+.hero-headline-script {
+  font-family: 'Playball', cursive;
   font-size: 7.5rem;
-  line-height: 82px;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.hero-text #i1{
-  font-family: 'Playball' , cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15rem;
-  line-height: 79%;
   color: #B29784;
-  margin: 0;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  display: block;
+  margin-bottom: -0.5rem;
 }
 
+.hero-headline-serif {
+  font-family: 'Philosopher', serif;
+  font-size: 3.8rem;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.1;
+  display: block;
+  margin-bottom: 1.2rem;
+}
 
-.hero-text p {
-  margin-top: 1.8rem;
-  font-family:'Prata';
-  font-size: 2.5rem;
-  font-weight : 400;
-  margin-bottom: 1.8rem;
-  padding-left: 10%;
+.hero-description {
+  font-family: 'Prata', serif;
+  font-size: 1.5rem;
   color: #B09885;
+  margin-bottom: 2.2rem;
+  margin-top: 0.5rem;
+  max-width: 90%;
 }
-
 
 .hero-btn {
-  width: 180px;
-  height: 50px;
-  color: white;
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-  padding: 0.7rem 1.5rem;
-  font-size: 2.5rem;
-  border: none;
-  border-radius: 34px;
-  cursor: pointer;
   background: #7E4623;
-  margin-left: 10%;
+  color: #fff;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 28px;
+  padding: 0.7rem 2.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: background 0.2s, transform 0.2s;
+}
+.hero-btn:hover, .hero-btn:focus {
+  background: #9A4309;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
 }
 
-
-
-
-.hero-overlay-image {
-  position: absolute;
-  width: 500px; /* adjust as per requirement */
+.hero-image-wrapper {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  min-width: 350px;
+}
+.hero-image {
+  width: 420px;
+  max-width: 90vw;
   height: auto;
-  left: 73%;  /* adjust to align on the wooden block */
-  top: 40%;   /* adjust to align vertically */
-  transform: translate(-50%, -50%); /* center from the left/top point */
-  pointer-events: none; /* prevents interaction if not needed */
+  object-fit: contain;
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.10);
+}
+
+@media (max-width: 1100px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 2vw;
+  }
+  .hero-image-wrapper {
+    justify-content: center;
+    margin-top: 2rem;
+    min-width: 0;
+  }
+  .hero-image {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .hero-text {
+    max-width: 100vw;
+    align-items: flex-start;
+  }
+  .hero-headline-script {
+    font-size: 4rem;
+  }
+  .hero-headline-serif {
+    font-size: 2.2rem;
+  }
+  .hero-description {
+    font-size: 1.15rem;
+  }
+}
+@media (max-width: 700px) {
+  .hero-section {
+    height: auto;
+    min-height: 70vh;
+    padding: 2rem 0;
+  }
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1vw;
+  }
+  .hero-image {
+    width: 180px;
+  }
+  .hero-headline-script {
+    font-size: 2.5rem;
+  }
+  .hero-headline-serif {
+    font-size: 1.3rem;
+  }
+  .hero-description {
+    font-size: 1.1rem;
+  }
+  .hero-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+  }
 }

@@ -1,92 +1,126 @@
 import React, { useState } from 'react';
-import './Navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { useCart } from '../../contexts/CartContext';
+import { FaSearch, FaShoppingCart, FaHeart, FaUser, FaSignOutAlt, FaBox, FaHistory, FaStar } from 'react-icons/fa';
 import logo from '../../assets/logo.svg';
-import search from '../../assets/search-icon.svg';
-import cart from '../../assets/cart-icon.svg';
-import heart from '../../assets/heart-icon.svg';
-import login from '../../Pages/Login/Login.jsx';
-import profile from '../../assets/profile-icon.svg';
-import orders from '../../assets/orders-icon.svg';
-import history from '../../assets/history-icon.svg';
-import wishlist from '../../assets/wishlist-icon.svg';
-import logout from '../../assets/logout-icon.svg';
-import loginIcon from '../../assets/login-icon.png';
+import './Navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+    const { user, isAuthenticated, logout } = useAuth();
+    const { getCartItemCount } = useCart();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+        }
+    };
+
+    const handleLogout = async () => {
+        await logout();
+        setMenuOpen(false);
+        navigate('/');
+    };
+
+    const cartItemCount = getCartItemCount();
+
     return (
-    <>
-        <section className="navbar-container container">
-            <nav className="navbar container">
+        <section className="navbar-container">
+            <nav className="navbar">
                 <div className="logo">
-                    <img src={logo} alt='logo'></img>
-                    <h1 className="brand-name">WUDZIQUE</h1>
+                    <Link to="/" className="logo-link">
+                        <img src={logo} alt="Wudzique Logo" style={{ height: '38px', marginRight: '0.5em' }} />
+                        <span className="brand-name">WUDZIQUE</span>
+                    </Link>
                 </div>
-                <div class="search-container">
-                    <img src={search} className='search-icon'></img>
-                    <input type="text" id="search-input" placeholder="Search"/>
-                </div>
-  
+                <form onSubmit={handleSearch} className="search-container">
+                    <FaSearch className='search-icon' />
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </form>
                 <div className="nav-links">
                     <ul className="nav-items">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href={login} id="login">Log in</a></li>    
-                        <li><a href="#" id="cart-icon"><img src={cart} alt="Cart"></img></a></li>    
-                        <li><a href="#" id="heart-icon" alt="Wishlist"><img src={heart}></img></a></li>    
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About Us</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                        {!isAuthenticated && (
+                            <li><Link to="/login" className="login-link">Log in</Link></li>
+                        )}
+                        <li>
+                            <Link to="/cart" className="cart-link">
+                                <FaShoppingCart />
+                                {cartItemCount > 0 && (
+                                    <span className="cart-badge">{cartItemCount}</span>
+                                )}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/wishlist" className="wishlist-link">
+                                <FaHeart />
+                            </Link>
+                        </li>
                     </ul>
                 </div>
-                
-                {/* <div class="hori-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
-                </div> */}
-
-                <div className='hamburger-wrapper' 
-                onMouseEnter={() =>setMenuOpen(true)} 
-                onMouseLeave={() => setMenuOpen(false)}>
-                    <div class="hori-lines">
-                        <span class="line line1"></span>
-                        <span class="line line2"></span>
-                        <span class="line line3"></span>
+                <div className={`hamburger-wrapper${menuOpen ? ' open' : ''}`}
+                    onMouseEnter={() => setMenuOpen(true)}
+                    onMouseLeave={() => setMenuOpen(false)}>
+                    <div className="hori-lines">
+                        <span className="line line1"></span>
+                        <span className="line line2"></span>
+                        <span className="line line3"></span>
                     </div>
-
                     {menuOpen && (
                         <div className='dropdown-menu'>
                             <ul>
-                                {isLoggedIn ? (
+                                {isAuthenticated ? (
                                     <>
-                                        <li><img src={profile} alt='#' id='profile'></img>
-                                        <a href='#'>Profile</a></li>
-
-                                        <li><img src={orders} alt='#' id='orders'></img>
-                                        <a href='#'>My Orders</a></li>
-
-                                        <li><img src={history} alt='#' id='history'></img>
-                                        <a href='#'>History</a></li>
-
-                                        <li><img src={wishlist} alt='#' id='wishlist'></img>
-                                        <a href='#'>Wishlist</a></li>
-
-                                        <li><img src={logout} alt='#' id='logout'></img>
-                                        <a href='#' onClick={() => setIsLoggedIn(false)}>Logout</a></li>
+                                        <li className="user-info">
+                                            <FaUser className="menu-icon" />
+                                            <span>Profile</span>
+                                        </li>
+                                        <li>
+                                            <FaBox className="menu-icon" />
+                                            <span>My Orders</span>
+                                        </li>
+                                        <li>
+                                            <FaHistory className="menu-icon" />
+                                            <span>History</span>
+                                        </li>
+                                        <li>
+                                            <FaStar className="menu-icon" />
+                                            <span>Wishlist</span>
+                                        </li>
+                                        <li>
+                                            <FaSignOutAlt className="menu-icon" />
+                                            <button onClick={handleLogout} className="logout-btn">
+                                                Logout
+                                            </button>
+                                        </li>
                                     </>
                                 ) : (
-                                    <li><img src={loginIcon} alt='#' id='login'></img><a href="#">Login</a></li>
+                                    <li>
+                                        <FaUser className="menu-icon" />
+                                        <Link to="/login" onClick={() => setMenuOpen(false)}>
+                                            Login
+                                        </Link>
+                                    </li>
                                 )}
                             </ul>
                         </div>
                     )}
                 </div>
-
-                
             </nav>
         </section>
-    </>
-  );
+    );
 }
 
 export default Navbar;
