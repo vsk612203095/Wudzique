@@ -2,14 +2,29 @@ import Navbar from "../../components/Navbar/Navbar.jsx";
 import "./Products.css";
 import heartIcon from "../../assets/heart-icon-black.png";
 import sendIcon from "../../assets/send-icon.svg";
-import lampImg from "../../assets/c-lamp.jpeg";
-import { useState } from "react";
-// import {products} from '../../Data/products.js';
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 export default function Product() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/wudzique/products/all")
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        toast.error("Error fetching Products", err);
+      });
+  }, []);
+
   return (
     <>
       <div className="products">
+        <ToastContainer />
         <Navbar />
         <div className="filters">
           <ul>
@@ -17,11 +32,9 @@ export default function Product() {
           </ul>
         </div>
         <div className="grid grid-cols-2 mt-[130px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-[1200px]  px-4">
-          <ProductItems />
-          <ProductItems />
-          <ProductItems />
-          <ProductItems />
-          <ProductItems />
+          {products.map((product) => (
+            <ProductItems key={product._id} product={product} />
+          ))}
         </div>
       </div>
     </>
@@ -50,13 +63,13 @@ function Category() {
   );
 }
 
-function ProductItems() {
+function ProductItems({ product }) {
   return (
     <>
       <div className="w-full h-[430px] border-[0.5px] backdrop-blur-[6px] p-4 bg-white/30 space-y-3 mt-5 mb-3 shadow-[0px_2px_6px_0px_#00000040]">
         <div className="w-full flex justify-center">
           <img
-            src={lampImg}
+            src={product.mainImg}
             alt="Wooden Lamp"
             className="h-64 object-contain"
           />
@@ -65,7 +78,7 @@ function ProductItems() {
         <div>
           <div className="heading flex justify-between items-center overflow-hidden">
             <h2 className="text-black font-[Outfit] font-[500] text-[2.2rem]">
-              Wooden Lamp
+              {product.name}
             </h2>
             <div className="flex justify-between text-xl gap-3 right-4">
               <img
@@ -81,13 +94,13 @@ function ProductItems() {
             </div>
           </div>
           <p className="text-sm text-black font-[Outfit] font-[300] text-[1.6rem]">
-            Colour - Wooden brown
+            Colour - {product.color}
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-green-600 font-semibold">
           <span className="bg-green-100 text-green-700 text-sm px-2 py-1 rounded-full">
-            4.8★
+            {product.averageRating}★
           </span>
           <span className="text-sm text-black font-[Outfit] font-[200] text-[1rem]">
             Ratings
@@ -95,14 +108,14 @@ function ProductItems() {
         </div>
 
         <div className="space-x-2 text-[16px]">
-          <span className="font-bold text-black  font-[Outfit] font-[500] text-[2.4rem]">
-            Rs. 300
+          <span className="font-bold text-black  font-[Outfit] text-[2.4rem]">
+            Rs. {product.price}
           </span>
           <span className="line-through text-gray-400 font-[Outfit] font-[300] text-[1.4rem] ">
-            Rs. 500
+            Rs. {product.originalPrice}
           </span>
           <span className="text-green-600 font-[Outfit] font-[500] text-[1.2rem] ">
-            60% off
+            {product.discountPercent}% off
           </span>
         </div>
 

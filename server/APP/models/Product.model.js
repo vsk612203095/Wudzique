@@ -20,10 +20,10 @@ const ProductSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: true,
     },
     originalPrice: {
       type: Number,
+      required: true,
     },
     discountPercent: {
       type: Number,
@@ -81,7 +81,7 @@ const ProductSchema = new mongoose.Schema(
     },
     variants: [
       {
-        color: String,
+        colors: String,
         image: String,
         stock: Number,
       },
