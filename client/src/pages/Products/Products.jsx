@@ -28,8 +28,7 @@ export default function Product() {
   );
 }
 
-function Category(products) {
-  let categories = products.category;
+function Category() {
   return (
     <>
       <li className="active">
