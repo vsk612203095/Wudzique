@@ -1,42 +1,36 @@
-// let http = require("http");
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-// let server = http.createServer((req, res) => {
-//   res.end("Welcome to wudzique");
-// });
+const adminProductRoutes = require("./APP/routes/admin/ProductRouter");
+const webProductRoutes = require("./APP/routes/web/ProductRouter");
+const userRoutes = require("./APP/routes/admin/UserRouter");
+const authRoutes = require("./APP/routes/web/AuthRouter");
 
-// server.listen("5000"); //http://localhost:5000
-
-let express = require("express");
-let app = express();
-//when your req is going to access json data then write this line compulsory
+const app = express();
 app.use(express.json());
 
+const cors = require("cors");
+app.use(cors());
+
+//Routes
+app.use("/api/wudzique/user", authRoutes);
+app.use("/api/wudzique/admin/user", userRoutes);
+app.use("/api/wudzique/admin/products", adminProductRoutes);
+app.use("/api/wudzique/products", webProductRoutes);
 app.get("/", (req, res) => {
-  res.send({ status: 1, msg: "Homepage API" });
+  res.send("Wudzique Server is Running ✅");
 });
 
-app.get("/about", (req, res) => {
-  res.send({ status: 1, msg: "Aboutpage API" });
-});
-
-app.get("/about/:id", (req, res) => {
-  let currentId = req.params.id;
-  res.send("Aboutpage API" + currentId);
-});
-
-app.post("/login", (req, res) => {
-  res.status(200).json({
-    status: 1,
-    msg: "Login page API",
-    bodyData: req.body,
-    queryData: req.query,
+//Connect to MongoDB
+mongoose
+  .connect(process.env.DBURL)
+  .then(() => {
+    console.log("Connected to MongoDB");
+    app.listen(process.env.PORT || 3000, () => {
+      console.log("Server is running on port : " + (process.env.PORT || 3000));
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-  //   res.send({
-  //     status: 1,
-  //     msg: "Login page API",
-  //     bodyData: req.body,
-  //     queryData: req.query,
-  //   });
-});
-
-app.listen("8000");
