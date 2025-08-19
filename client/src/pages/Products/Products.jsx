@@ -5,9 +5,10 @@ import sendIcon from "../../assets/send-icon.svg";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
-export default function Product() {
+export function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -70,60 +71,60 @@ function ProductItems({ product }) {
         <div className="w-full flex justify-center">
           <img
             src={product.mainImg}
-            alt="Wooden Lamp"
-            className="h-64 object-contain"
+            alt={product.name}
+            className="h-64 m:h-48 md:h-56 lg:h-64 object-contain"
           />
         </div>
 
         <div>
-          <div className="heading flex justify-between items-center overflow-hidden">
-            <h2 className="text-black font-[Outfit] font-[500] text-[2.2rem]">
-              {product.name}
+          <div className="flex justify-between items-center">
+            <h2 className="text-black font-[Outfit] font-medium text-2xl sm:text-2xl md:text-3xl lg:text-4xl truncate">
+              <Link to={"/products/product"}>{product.name}</Link>
             </h2>
-            <div className="flex justify-between text-xl gap-3 right-4">
+            <div className="flex gap-3">
               <img
                 src={heartIcon}
                 alt=""
-                className="cursor-pointer w-8 h-8 object-contain"
+                className="cursor-pointer w-8 h-8 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-contain"
               />
               <img
                 src={sendIcon}
                 alt=""
-                className="cursor-pointer w-8 h-8 object-contain "
+                className="cursor-pointer w-8 h-8 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-contain "
               />
             </div>
           </div>
-          <p className="text-sm text-black font-[Outfit] font-[300] text-[1.6rem]">
+          <p className="text-xl text-black sm:text-1.5xl md:text-2xl font-[Outfit] font-[300] text-[1.6rem]">
             Colour - {product.color}
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-green-600 font-semibold">
-          <span className="bg-green-100 text-green-700 text-sm px-2 py-1 rounded-full">
+          <span className="bg-green-100 text-green-700 text-xl px-2 py-1 rounded-full">
             {product.averageRating}★
           </span>
-          <span className="text-sm text-black font-[Outfit] font-[200] text-[1rem]">
+          <span className="text-xl text-black font-[Outfit] font-[200] text-[1rem]">
             Ratings
           </span>
         </div>
 
-        <div className="space-x-2 text-[16px]">
-          <span className="font-bold text-black  font-[Outfit] text-[2.4rem]">
-            Rs. {product.price}
+        <div className="space-x-2 sm:space-x-3 md:space-x-4">
+          <span className="font-bold text-black  font-[Outfit] text-2xl sm:text-3xl md:text-4xl">
+            Rs.{product.price}
           </span>
-          <span className="line-through text-gray-400 font-[Outfit] font-[300] text-[1.4rem] ">
-            Rs. {product.originalPrice}
+          <span className="line-through text-gray-400 font-[Outfit] font-[300] text-xl sm:text-2xl md:text-2xl ">
+            Rs.{product.originalPrice}
           </span>
-          <span className="text-green-600 font-[Outfit] font-[500] text-[1.2rem] ">
-            {product.discountPercent}% off
+          <span className="text-green-600 font-[Outfit] font-[500] text-xl sm:text-2xl md:text-2xl ">
+            {product.discountPercent}%off
           </span>
         </div>
 
-        <div className="flex flex-col gap-4 pt-0">
-          <button className=" bg-[#7E4623] text-white py-2 rounded-[34px] hover:bg-[#633d24] transition-all duration-300 font-[Outfit] font-[500] text-[2.6rem] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]">
+        <div className="flex flex-col  gap-3">
+          <button className="flex-1 bg-[#7E4623] text-white py-2 rounded-[34px] hover:bg-[#633d24] transition-all duration-300 font-[Outfit] font-[500] text-[2.6rem] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]">
             Buy now
           </button>
-          <button className="bg-[#996541] text-white py-2 rounded-full hover:bg-[#633d24] transition-all duration-300 font-[Outfit] font-[500] text-[2.6rem] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]">
+          <button className="flex-1 bg-[#996541] text-white py-2 rounded-full hover:bg-[#633d24] transition-all duration-300 font-[Outfit] font-[500] text-[2.6rem] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]">
             Add to cart
           </button>
         </div>

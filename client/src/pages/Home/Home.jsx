@@ -1,6 +1,6 @@
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Background from "../../components/Background/Background.jsx";
+// import Background from "../../components/Background/Background.jsx";
 import Hero from "../../components/Hero/Hero.jsx";
 import About from "../../components/About/About.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -29,7 +29,7 @@ export default function Home() {
     <>
       <div className="wrapper">
         <main className="content">
-          <Background />
+          {/* <Background /> */}
           <Navbar />
           <Hero />
           <About />

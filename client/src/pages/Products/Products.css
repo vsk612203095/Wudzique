@@ -8,7 +8,7 @@
     width: 100%;
     position: fixed;
     top: 80px; /* height of your navbar */
-    z-index: 50; /* stays above content */
+    z-index: 30; /* stays above content */
     background-color: white;
     height: 50px;
     display: flex;
